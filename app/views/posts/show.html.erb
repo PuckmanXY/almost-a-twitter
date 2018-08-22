@@ -5,5 +5,7 @@
 <div>
   <%= @post.body %>
 </div>
-<%= link_to "Edit Post", edit_post_url %>
-<%= link_to "Delete Post", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
+<% if @post.user = current_user %>
+  <%= link_to "Edit Post", edit_post_url %>
+  <%= link_to "Delete Post", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
